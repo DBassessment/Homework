@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Danske_Bank_Homework
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string inputFile = @"C:\Users\Rasa\Source\Repos\Homework\remote_server\share\file.txt";
+            string outputFile = @"C:\Users\Rasa\Source\Repos\Homework\remote_server2\share\file.txt";
+
+            String symbolCheck = "ZZ.ZZ.ZZ";
+            Boolean patternFinded = false;
+
+            try
+            {
+                TextReader reader = new StreamReader(firstFilePath);
+                TextWriter writer = new StreamWriter(secondFilePath);
+            }
+
+            String buffer = "";
+            while ((buffer = reader.ReadLine()) != null)
+            {
+                if (patternFinded == true)
+                {
+                    string text = buffer;
+                    writer.WriteLine(reverseString(text));
+
+                    patternFinded = false;
+                }
+
+                else
+                {
+                    if (buffer.Contains(symbolCheck))
+                    {
+                        if (buffer.EndsWith(symbolCheck))
+                        {
+                            writer.WriteLine(buffer);
+
+                        }
+                        else
+                        {
+                            writer.WriteLine(buffer);
+                            patternFinded = true;
+                        }
+                    }
+                    else
+                    {
+                        writer.WriteLine(buffer);
+                    }
+                }
+
+            }
+
+        }
+    }
+    
